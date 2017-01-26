@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#installation
+sudo cp startlog /usr/local/bin
+sudo cp logparse /usr/local/bin
+sudo cp stoplog /usr/local/bin
+
+
+#used for running on startup
+sudo cp startlog /etc/init.d
+chmod ugo+x /etc/init.d/startlog
+update-rc.d startlog defaults
+
+echo 'description "log job"' > /etc/init/logjob.conf
+echo 'start on startup' >> /etc/init/logjob.conf
+echo 'task' >> /etc/init/logjob.conf
+echo 'exec startlog' >> /etc/init/logjob.conf

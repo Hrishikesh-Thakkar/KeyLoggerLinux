@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kill $(ps aux | awk '/[s]tartlog/ {print $2}')
